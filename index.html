@@ -1,0 +1,82 @@
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Image Search Abstraction Layer</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <meta name="author" content="Abdulah Hamzic">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="container-fluid">
+            <h1>FreeCodeCamp API Basejump: Image Search Abstraction Layer</h1>
+            
+            <blockquote>
+                <p>User stories:</p>
+                <ul>
+                    <li>I can get the image URLs, alt text and page urls for a set of images relating to a given search string.</li>
+                    <li>I can paginate through the responses by adding a ?offset=2 parameter to the URL</li>
+                    <li>I can get a list of the most recently submitted search strings.</li>
+                </ul>
+            </blockquote>
+            
+            <h3>Example usage:</h3>
+            <code>https://image-search-hamzicabdulah.herokuapp.com/search/funny</code><br/>
+            <code>https://image-search-hamzicabdulah.herokuapp.com/search/funny?offset=10</code>
+            
+            <h3>Example output</h3>
+            <code>
+                [
+                    {
+                        "url":"http://i.imgur.com/HTbFRUF.jpg",
+                        "snippet":"Funny title",
+                        "thumbnail":"http://i.imgur.com/HTbFRUFs.jpg",
+                        "context":"http://imgur.com/a/oKRDW"
+                    },
+                    {
+                        "url":"http://i.imgur.com/gjxMvt6.gif",
+                        "snippet":"funny twerk with his father .......................",
+                        "thumbnail":"http://i.imgur.com/gjxMvt6s.jpg",
+                        "context":"http://i.imgur.com/gjxMvt6"
+                    },
+                    {
+                        "url":"http://i.imgur.com/gCPOxZQ.jpg",
+                        "snippet":"Oldie, but funny.",
+                        "thumbnail":"http://i.imgur.com/gCPOxZQs.jpg",
+                        "context":"http://imgur.com/a/2fFRV"
+                    },
+                    {
+                        "url":"http://i.imgur.com/dJ1GiRQ.jpg",
+                        "snippet":"Funny images dump for your pleasure",
+                        "thumbnail":"http://i.imgur.com/dJ1GiRQs.jpg",
+                        "context":"http://imgur.com/a/7e1Bc"
+                    },
+                    {
+                        "url":"http://i.imgur.com/W9qRAQ7.jpg",
+                        "snippet":"Funny moment with a Dog ^^",
+                        "thumbnail":"http://i.imgur.com/W9qRAQ7s.jpg",
+                        "context":"http://imgur.com/a/6SBME"
+                    }
+                ]
+            </code>
+            
+            <h3>Usage:</h3>
+            <code>https://url-shortener-hamzicabdulah.herokuapp.com/api/latest1</code>
+            
+            <h3>Will redirect to:</h3>
+            <code>
+                [
+                    {
+                        term: "funny",
+                        when: "Mon Feb 27 2017 20:14:40 GMT+0000 (UTC)"
+                    },
+                    {
+                        term: "funny",
+                        when: "Mon Feb 27 2017 20:15:23 GMT+0000 (UTC)"
+                    },
+                ]
+            </code>
+        </div>
+    </body>
+</html>
