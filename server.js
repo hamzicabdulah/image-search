@@ -12,7 +12,7 @@ options = {
     }
 };
 
-app.get('api/:query', function(req, res) {
+app.get('/api/:query', function(req, res) {
   options.url = 'https://api.imgur.com/3/gallery/search/?q=' + req.params.query;
 
   request(options, function(err, response, body) { 
