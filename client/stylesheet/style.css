@@ -1,0 +1,23 @@
+body {
+    background: #ffffcc;
+    margin: 0 2%;
+    color: #33334d;
+    font-family: 'PT Serif', serif;
+}
+.header, h3 {
+    font-family: 'Russo One', sans-serif;
+}
+.header {
+    text-align: center;
+}
+h3 {
+    margin-bottom: 0.3em;
+}
+a {
+    text-decoration: none;
+}
+@media screen and (min-width: 768px) {
+    .examples > div:first-child {
+        margin-right: 4%;
+    }
+}

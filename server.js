@@ -64,7 +64,11 @@ MongoClient.connect(URL, function(err, db) {
       
     });
     
-    app.use(express.static(__dirname + '/public'));
+    app.get(['/:anything', 'api/:anything'], function(req, res) {
+        res.redirect('/');
+    });
+    
+    app.use(express.static(__dirname + '/client'));
     
     app.listen(process.env.PORT || 8080, function() {
         console.log('Listening on port 8080');

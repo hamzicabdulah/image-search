@@ -1,0 +1,86 @@
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Image Search Abstraction Layer</title>
+        <meta name="author" content="Abdulah Hamzic">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=PT+Serif|Russo+One" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="stylesheet/style.css"> 
+    </head>
+    <body>
+        <h1 class="header">
+             Image Search Abstraction Layer
+        </h1>
+        <h3>Usage:</h3>
+        You can get the image URLs, titles, thumbnails and page urls for a set of images relating to a given search string.<br>
+        You can paginate through the responses by adding a ?offset=2 parameter to the URL.<br>
+        You can get a list of the most recently submitted search strings.
+        <div class="examples">
+            <div>
+                <h3>Example usage:</h3>
+                <code><a target="_blank" href="https://image-search-hamzicabdulah.herokuapp.com/search/funny">https://image-search-hamzicabdulah.herokuapp.com/search/funny</a></code><br>
+                <code><a target="_blank" href="https://image-search-hamzicabdulah.herokuapp.com/search/funny?offset=5">https://image-search-hamzicabdulah.herokuapp.com/search/funny?offset=5</a></code>
+            </div>
+            <div>
+                <h3>Example output:</h3>
+                <code>
+                    [
+                        {
+                            "url":"http://i.imgur.com/HTbFRUF.jpg",
+                            "snippet":"Funny title",
+                            "thumbnail":"http://i.imgur.com/HTbFRUFs.jpg",
+                            "context":"http://imgur.com/a/oKRDW"
+                        },
+                        {
+                            "url":"http://i.imgur.com/gjxMvt6.gif",
+                            "snippet":"funny twerk with his father .......................",
+                            "thumbnail":"http://i.imgur.com/gjxMvt6s.jpg",
+                            "context":"http://i.imgur.com/gjxMvt6"
+                        },
+                        {
+                            "url":"http://i.imgur.com/gCPOxZQ.jpg",
+                            "snippet":"Oldie, but funny.",
+                            "thumbnail":"http://i.imgur.com/gCPOxZQs.jpg",
+                            "context":"http://imgur.com/a/2fFRV"
+                        },
+                        {
+                            "url":"http://i.imgur.com/dJ1GiRQ.jpg",
+                            "snippet":"Funny images dump for your pleasure",
+                            "thumbnail":"http://i.imgur.com/dJ1GiRQs.jpg",
+                            "context":"http://imgur.com/a/7e1Bc"
+                        },
+                        {
+                            "url":"http://i.imgur.com/W9qRAQ7.jpg",
+                            "snippet":"Funny moment with a Dog ^^",
+                            "thumbnail":"http://i.imgur.com/W9qRAQ7s.jpg",
+                            "context":"http://imgur.com/a/6SBME"
+                        }
+                    ]
+                </code>
+            </div>
+        </div>
+        <div class="examples">
+            <div>
+                <h3>Example usage:</h3>
+                <code><a target="_blank" href="https://image-search-hamzicabdulah.herokuapp.com/api/latest">https://image-search-hamzicabdulah.herokuapp.com/api/latest</a></code>
+            </div>
+            <div>
+                <h3>Redirects to:</h3>
+                <code>
+                    [
+                        {
+                            term: "funny",
+                            when: "Mon Feb 27 2017 20:14:40 GMT+0000 (UTC)"
+                        },
+                        {
+                            term: "funny",
+                            when: "Mon Feb 27 2017 20:15:23 GMT+0000 (UTC)"
+                        }
+                    ]
+                </code>
+            </div>
+        </div>
+    </body>
+</html>
