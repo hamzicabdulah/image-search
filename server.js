@@ -3,16 +3,18 @@ app = express(),
 request = require('request');
 
 var MongoClient = require('mongodb').MongoClient;
-//URL is saved as an environment variable in the Heroku config to protect username and password
-var URL = process.env.MONGOLAB_URI;
+//URL and CLIENT_ID are saved as environment variables in the Heroku config to protect username and password
+var URL = process.env.MONGOLAB_URI,
+CLIENT_ID = process.env.CLIENT_ID;
 
-var json,
-apiHost = "http://i.imgur.com/",
+
+//Setting variables for using Imgur Gallery API
+var apiHost = "http://i.imgur.com/",
 options = {  
     url: '',
     method: 'GET',
     headers: {
-        'Authorization': 'Client-ID ' + process.env.CLIENT_ID
+        'Authorization': 'Client-ID ' + CLIENT_ID
     }
 };
 
@@ -28,6 +30,7 @@ MongoClient.connect(URL, function(err, db) {
     });
   
     app.get('/search/:query', function(req, res) {
+      //Inserting a valid search query inserts the query to the database and then uses the Imgur API to parse and send the results to the user    
       collection.insert({term: req.params.query, when: new Date().toISOString()}, function (err) {
           if (err) return console.log(err);
           console.log("Inserted search with query " + req.params.query + " to database");
@@ -36,15 +39,8 @@ MongoClient.connect(URL, function(err, db) {
     
       request(options, function(err, response, body) { 
         if (err) return console.log(err);
-        json = body;
+        var json = body;
         var arr = [];
-        
-        function checkLink (item) {
-            var exts = ['jpg', 'png', 'gif'];
-            for (var i = 0; i < exts.length; i++) {
-                if (item.link.slice(-4) == "." + exts[i]) return true;
-            }
-        }
         
         JSON.parse(json).data.forEach(function(item) {
             arr.push(
@@ -56,6 +52,14 @@ MongoClient.connect(URL, function(err, db) {
                 }    
             );
         });
+        
+        function checkLink (item) {
+            //Checks whether a link is an image by checking the extension
+            var exts = ['jpg', 'png', 'gif'];
+            for (var i = 0; i < exts.length; i++) {
+                if (item.link.slice(-4) == "." + exts[i]) return true;
+            }
+        }
         
         var offset = req.query.offset;
         res.send(isNaN(Number(offset)) ? arr : arr.slice(0, offset));
