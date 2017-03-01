@@ -28,7 +28,7 @@ MongoClient.connect(URL, function(err, db) {
     });
   
     app.get('/search/:query', function(req, res) {
-      collection.insert({term: req.params.query, when: Date()}, function (err) {
+      collection.insert({term: req.params.query, when: new Date().toISOString()}, function (err) {
           if (err) return console.log(err);
           console.log("Inserted search with query " + req.params.query + " to database");
       });
@@ -64,7 +64,7 @@ MongoClient.connect(URL, function(err, db) {
       
     });
     
-    app.get(['/:anything', 'api/:anything'], function(req, res) {
+    app.get('/:anything', function(req, res) {
         res.redirect('/');
     });
     
