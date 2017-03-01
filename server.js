@@ -12,7 +12,7 @@ options = {
     url: '',
     method: 'GET',
     headers: {
-        'Authorization': 'Client-ID 08557a8a10c6f24'
+        'Authorization': 'Client-ID ' + process.env.CLIENT_ID
     }
 };
 
